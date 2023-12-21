@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 st.title('крутой классный дашборд')
 # Загрузим данные из Excel-файла
 file_path = 'data/data.xlsx'
-data_load_state = st.text('Мы загружаемся!')
+# data_load_state = st.text('Мы загружаемся!')
 orders_df = pd.read_excel(file_path, sheet_name='Orders')
 returns_df = pd.read_excel(file_path, sheet_name='Returns')
 
@@ -19,7 +19,7 @@ returns_df = pd.read_excel(file_path, sheet_name='Returns')
 # orders_df.fillna(0, inplace=True)
 # orders_df.fillna(0, inplace=True)
 
-data_load_state.text('Цифровизация....')
+# data_load_state.text('Цифровизация....')
 # цифровизация категориальных данных
 label_encoder = LabelEncoder()
 orders_df['Ship Mode'] = label_encoder.fit_transform(orders_df['Ship Mode'])
@@ -62,22 +62,21 @@ def load_data():
     return data
 
 # Create a text element and let the reader know the data is loading.
-data_load_state.text('Мы загружаем 10 строчек')
+# data_load_state.text('Мы загружаем 10 строчек')
 # Load 10,000 rows of data into the dataframe.
 data = load_data()
 # Notify the reader that the data was successfully loaded.
-data_load_state.text("Done! (using st.cache_data)")
-st.subheader('Raw data')
 
-# Строим столбчатую диаграмму для примера (замените 'Sales' на нужный столбец)
-fig, ax = plt.subplots()
-ax.bar(orders_df['Category'], orders_df['Sales'])
-ax.set_xlabel('Категория')
-ax.set_ylabel('Продажи')
-ax.set_title('Продажи по категориям')
-
-# Отображение диаграммы в Streamlit
-st.pyplot(fig)
+#
+# # Строим столбчатую диаграмму для примера (замените 'Sales' на нужный столбец)
+# fig, ax = plt.subplots()
+# ax.bar(orders_df['Category'], orders_df['Sales'])
+# ax.set_xlabel('Категория')
+# ax.set_ylabel('Продажи')
+# ax.set_title('Продажи по категориям')
+#
+# # Отображение диаграммы в Streamlit
+# st.pyplot(fig)
 
 # График временного ряда
 st.subheader('Динамика продаж во времени')
